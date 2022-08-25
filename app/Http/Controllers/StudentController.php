@@ -53,7 +53,7 @@ class StudentController extends Controller
         $student->state = $request->state;
         $student->address = $request->address;
 
-        $student->save();
+        $student->save(); // insert into students
 
         return redirect('/students');
     }
@@ -79,7 +79,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -91,7 +93,26 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'address' => 'required'
+        ]);
+
+        $student = Student::find($id);
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->city = $request->city;
+        $student->state = $request->state;
+        $student->address = $request->address;
+
+        $student->save(); // update students set name =
+
+        return redirect('/students');
     }
 
     /**
