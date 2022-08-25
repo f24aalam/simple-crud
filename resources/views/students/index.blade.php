@@ -20,7 +20,7 @@
                 <td>{{ $student->name }}</td>
                 <td>{{ $student->email }}</td>
                 <td>{{ $student->phone }}</td>
-                <td>&nbsp;</td>
+                <td><a href="{{ url('/students/' . $student->id) }}">view</a></td>
             </tr>
         @endforeach
     </table>
