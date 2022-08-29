@@ -23,6 +23,11 @@
                 <td>
                     <a href="{{ url('/students/' . $student->id) }}">view</a>
                     <a href="{{ url('/students/' . $student->id . '/edit') }}">edit</a>
+                    <form action="{{ url('/students/' . $student->id) }}" method="post" style="display: inline" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
