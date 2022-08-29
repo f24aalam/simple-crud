@@ -61,12 +61,12 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        $student = Student::find($id);
+        // $student = Student::find($id);
 
         return view('students.show', compact('student'));
     }
@@ -74,12 +74,12 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        $student = Student::find($id);
+        // $student = Student::find($id);
 
         return view('students.edit', compact('student'));
     }
@@ -88,10 +88,10 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
         $request->validate([
             'name' => 'required',
@@ -102,7 +102,7 @@ class StudentController extends Controller
             'address' => 'required'
         ]);
 
-        $student = Student::find($id);
+        // $student = Student::find($id);
         $student->name = $request->name;
         $student->email = $request->email;
         $student->phone = $request->phone;
@@ -118,12 +118,12 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        $student = Student::find($id);
+        // $student = Student::find($id);
         $student->delete();
 
         return redirect('/students');
