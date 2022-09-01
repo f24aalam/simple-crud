@@ -29,6 +29,17 @@
             <div style="color: red">{{ $message }}</div>
         @enderror
         <br/>
+        <label for="teacher">Select Teacher</label>
+        <select name="teacher">
+            <option value="">Select Teacher</option>
+            @foreach ($teachers as $teacher)
+                <option>{{ $teacher->name }}</option>
+            @endforeach
+        </select>
+        @error('teacher')
+            <div style="color: red">{{ $message }}</div>
+        @enderror
+        <br/>
         <label>Student City:</label>
         <input type="text" placeholder="Enter Student City" name="city" value="{{ $student->city }}"/>
         @error('city')

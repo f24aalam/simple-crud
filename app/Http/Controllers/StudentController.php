@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -25,7 +26,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $teachers = Teacher::all();
+
+        return view('students.create', compact('teachers'));
     }
 
     /**
@@ -40,6 +43,7 @@ class StudentController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
+            'teacher' => 'required',
             'city' => 'required',
             'state' => 'required',
             'address' => 'required'
@@ -49,6 +53,7 @@ class StudentController extends Controller
         $student->name = $request->name;
         $student->email = $request->email;
         $student->phone = $request->phone;
+        $student->teacher_id = $request->teacher;
         $student->city = $request->city;
         $student->state = $request->state;
         $student->address = $request->address;
@@ -80,8 +85,9 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         // $student = Student::find($id);
+        $teachers = Teacher::all();
 
-        return view('students.edit', compact('student'));
+        return view('students.edit', compact('student', 'teachers'));
     }
 
     /**
@@ -97,6 +103,7 @@ class StudentController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
+            'teacher' => 'required',
             'city' => 'required',
             'state' => 'required',
             'address' => 'required'
@@ -106,6 +113,7 @@ class StudentController extends Controller
         $student->name = $request->name;
         $student->email = $request->email;
         $student->phone = $request->phone;
+        $student->teacher_id = $request->teacher;
         $student->city = $request->city;
         $student->state = $request->state;
         $student->address = $request->address;
