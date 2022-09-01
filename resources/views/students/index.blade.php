@@ -7,7 +7,11 @@
     <title>Students</title>
 </head>
 <body>
-    <h1>Student List  <a href="{{ url('/students/create') }}">Create Student</a></h1>
+    <h1>Student List
+        <br>
+        <a href="{{ url('/students/create') }}">Create Student</a>
+        <a href="{{ url('/teachers') }}">Teachers</a>
+    </h1>
     <table border="1">
         <tr>
             <th>Name</th>
