@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <th>Teacher</th>
-            <td>{{ $teacher->name }}</td>
+            <td>{{ $student->teacher->name }}</td>
         </tr>
         <tr>
             <th>Email</th>
