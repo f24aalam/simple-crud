@@ -33,7 +33,7 @@
         <select name="teacher">
             <option value="">Select Teacher</option>
             @foreach ($teachers as $teacher)
-                <option>{{ $teacher->name }}</option>
+                <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
             @endforeach
         </select>
         @error('teacher')
